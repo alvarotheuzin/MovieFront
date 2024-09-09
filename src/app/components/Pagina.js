@@ -1,6 +1,5 @@
 "use client";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import apiMovie from "../services/apiMovies";
 
 export default function Pagina(props) {
 
@@ -10,16 +9,15 @@ export default function Pagina(props) {
         <Container>
           <Navbar.Brand href="../">Sistema Acadêmico</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/fundamentos">Filmes</Nav.Link>
-            <Nav.Link href="/clientes">Séries</Nav.Link>
-            <Nav.Link href="/array">Atores</Nav.Link>
             <NavDropdown title="Filmes" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/disney">Populares</NavDropdown.Item>
-              <NavDropdown.Item href="/disney/cards">Em Cartaz</NavDropdown.Item>
-              <NavDropdown.Item href="/disney/carrossel">Carrossel</NavDropdown.Item>
-              <NavDropdown.Item href="/disney/tabela">Tabela</NavDropdown.Item>
-
+              <NavDropdown.Item href="/filmes">Lista</NavDropdown.Item>
+              <NavDropdown.Item href="/filmes/card">Em Cartaz</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown title="Series" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/series">Lista</NavDropdown.Item>
+              <NavDropdown.Item href="/series/card">Em Cartaz</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="/atores">Atores</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

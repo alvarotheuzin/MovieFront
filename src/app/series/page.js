@@ -7,13 +7,14 @@ import { Table, Image } from "react-bootstrap";
 
 export default function Page() {
 
-    const [filmes, setFilmes] = useState([])
+    const [series, setSeries] = useState([])
 
     useEffect(() => {
-        apiMovie.get('movie/now_playing').then(resultado => {
-            setFilmes(resultado.data.results)
+        apiMovie.get('tv/top_rated').then(resultado => {
+            setSeries(resultado.data.results)
         })
     }, [])
+
 
     return (
         <Pagina titulo="Atores Populares">
@@ -27,10 +28,10 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    {filmes.map(item => (
+                    {series.map(item => (
                         <tr key={item.id}>
                             <td>{item.id}</td>
-                            <td>{item.title}</td>
+                            <td>{item.name}</td>
                         </tr>
                     ))}
                 </tbody>

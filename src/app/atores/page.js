@@ -7,11 +7,11 @@ import { Table, Image } from "react-bootstrap";
 
 export default function Page() {
 
-    const [filmes, setFilmes] = useState([])
+    const [atores, setAtores] = useState([])
 
     useEffect(() => {
-        apiMovie.get('movie/now_playing').then(resultado => {
-            setFilmes(resultado.data.results)
+        apiMovie.get('person/popular').then(resultado => {
+            setAtores(resultado.data.results)
         })
     }, [])
 
@@ -24,13 +24,19 @@ export default function Page() {
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
+                        <th>Foto</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filmes.map(item => (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.title}</td>
+                    {atores.map(ator => (
+                        <tr key={ator.id}>
+                            <td>{ator.id}</td>
+                            <td>{ator.name}</td>
+                            <td className="text-center">
+                                <a href={`/atores/${ator.id}`} target="_blank" rel="noopener noreferrer">
+                                    <Image src={`https://image.tmdb.org/t/p/w185${ator.profile_path}`} height={100} />
+                                </a>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
